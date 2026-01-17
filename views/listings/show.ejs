@@ -5,7 +5,7 @@
     <h3><%= listing.title %></h3>
   </div>
     <div class="listing-card card col-6 offset-3 show-card" >
-      <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing_image">
+      <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
 
       <div class="card-body">
         <p class="card-text">
@@ -39,7 +39,7 @@
       <h4>Review</h4>
       <form action="/listings/<%=listing._id%>/reviews" method="POST" class="needs-validation" novalidate>
         
-<div class="">
+  <div class="">
         <label for="rating" class="form-label">Rating</label>
         <fieldset class="starability-basic">
   <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
@@ -53,7 +53,7 @@
   <label for="first-rate4" title="Very good">4 stars</label>
   <input type="radio" id="first-rate5" name="review[rating]" value="5" />
   <label for="first-rate5" title="Amazing">5 stars</label>
-</fieldset>
+  </fieldset>
  </div>
 
         <div class="">
@@ -69,28 +69,34 @@
 
     <hr>
 
+    <% if(listing.reviews.length > 0) { %>
     <div class="col-8 offset-3 mt-3">
       <h5>All Reviews</h5>
       <div class="row mt-3">
       <% for(review of listing.reviews) { %>
         <div class="card col-5 me-4 mb-3">
           <div class="card-body">
-          <h6 class="card-title mt-2"><%= review.author.username %></h6>
-              <p class="starability-result" data-rating=<%= review.rating %>>
-    Rated: 3 stars
-  </p>
-             <p> <%= review.comment %>
-            </p>
-
+            <h6 class="card-title mt-2"><%= review.author.username %></h6>
+            <p class="starability-result" data-rating=<%= review.rating %>>Rated: 3 stars</p>
+            <p> <%= review.comment %></p>
             
             <form action="/listings/<%= listing._id %>/reviews/<%=review._id%>?_method=DELETE" class="mb-3" method="POST">
-            <button class="btn btn-dark btn-sm btn-border">Delete</button>
+              <button class="btn btn-dark btn-sm btn-border">Delete</button>
             </form>
             
           </div>
         </div>  
       <% } %>
     </div>
+    <% }%>
+
+    <div class="col-6 offset-3 mb-3">
+      <h5>Where you'll be</h5>
+      <div id="map"></div>
+      </div>
     </div>
+    
+          
 </div>  
 
+<script src="/js/map.js"></script>
