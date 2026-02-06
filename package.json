@@ -1,11 +1,9 @@
 {
-  "engines": {
-    "node": "22.13.1"
-  },
-  "name": "project-1",
+  "name": "StayScape",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,18 +11,18 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "babel": "^6.23.0",
+    "babel": "^5.8.38",
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
-    "connect-mongo": "^4.6.0",
+    "connect-mongo": "^6.0.0",
     "cookie-parser": "^1.4.7",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.2.4",
     "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
-    "express-session": "^1.18.2",
+    "express-session": "^1.19.0",
     "joi": "^18.0.2",
     "method-override": "^3.0.0",
-    "mongoose": "^7.8.8",
+    "mongoose": "^9.1.6",
     "multer": "^2.0.2",
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^3.1.11",
